@@ -1,4 +1,4 @@
-const prisma = require('../config/database');
+import prisma from '../config/database';
 
 class PersonModel {
   static async getAll() {
@@ -25,4 +25,4 @@ class PersonModel {
   }
 }
 
-module.exports = PersonModel;
+export default PersonModel;

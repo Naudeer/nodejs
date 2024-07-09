@@ -1,9 +1,10 @@
-const express = require('express');
+import express from 'express';
+import personRoutes from './routes/personRoutes';
+
 const app = express();
-const personRoutes = require('./routes/personRoutes');
 
 app.use(express.json());
 
 app.use('/api/people', personRoutes);
 
-module.exports = app;
+export default app;

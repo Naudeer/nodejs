@@ -1,6 +1,6 @@
-const PersonModel = require('../models/person');
+import PersonModel from '../models/person';
 
-exports.getAll = async (req, res) => {
+export const getAll = async (req, res) => {
   try {
     const people = await PersonModel.getAll();
     res.json(people);
@@ -9,7 +9,7 @@ exports.getAll = async (req, res) => {
   }
 };
 
-exports.getById = async (req, res) => {
+export const getById = async (req, res) => {
   try {
     const person = await PersonModel.getById(req.params.id);
     if (person) {
@@ -22,7 +22,7 @@ exports.getById = async (req, res) => {
   }
 };
 
-exports.create = async (req, res) => {
+export const create = async (req, res) => {
   try {
     const person = await PersonModel.create(req.body);
     res.status(201).json(person);
@@ -31,7 +31,7 @@ exports.create = async (req, res) => {
   }
 };
 
-exports.update = async (req, res) => {
+export const update = async (req, res) => {
   try {
     const person = await PersonModel.update(req.params.id, req.body);
     res.json(person);
@@ -40,7 +40,7 @@ exports.update = async (req, res) => {
   }
 };
 
-exports.delete = async (req, res) => {
+export const deletePerson = async (req, res) => { // Changed function name to avoid conflict with reserved word 'delete'
   try {
     await PersonModel.delete(req.params.id);
     res.json({ message: 'Person deleted' });
