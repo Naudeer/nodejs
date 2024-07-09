@@ -1,10 +1,11 @@
-import PersonModel from '../models/person';
+import PersonModel from '../models/person.js';
 
 export const getAll = async (req, res) => {
   try {
     const people = await PersonModel.getAll();
     res.json(people);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: 'Failed to retrieve people' });
   }
 };
