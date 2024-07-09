@@ -1,12 +1,12 @@
-import express from 'express';
-import personController from '../controllers/personController';
+import { Router } from 'express';
+import { getAll, getById, create, update, deletePerson } from '../controllers/personController';
 
-const router = express.Router();
+const router = Router();
 
-router.get('/', personController.getAll);
-router.get('/:id', personController.getById);
-router.post('/', personController.create);
-router.patch('/:id', personController.update);
-router.delete('/:id', personController.delete);
+router.get('/', getAll);
+router.get('/:id', getById);
+router.post('/', create);
+router.patch('/:id', update);
+router.delete('/:id', deletePerson);
 
 export default router;

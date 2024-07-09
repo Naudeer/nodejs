@@ -23,6 +23,11 @@ export const getById = async (req, res) => {
 };
 
 export const create = async (req, res) => {
+  const { name, age } = req.body;
+  if (!name || !age) {
+    return res.status(400).json({ error: 'Name and age are required' });
+  }
+
   try {
     const person = await PersonModel.create(req.body);
     res.status(201).json(person);
@@ -32,6 +37,11 @@ export const create = async (req, res) => {
 };
 
 export const update = async (req, res) => {
+  const { name, age } = req.body;
+  if (!name || !age) {
+    return res.status(400).json({ error: 'ID, name, and age are required' });
+  }
+
   try {
     const person = await PersonModel.update(req.params.id, req.body);
     res.json(person);
@@ -40,7 +50,7 @@ export const update = async (req, res) => {
   }
 };
 
-export const deletePerson = async (req, res) => { // Changed function name to avoid conflict with reserved word 'delete'
+export const deletePerson = async (req, res) => {
   try {
     await PersonModel.delete(req.params.id);
     res.json({ message: 'Person deleted' });
