@@ -33,6 +33,7 @@ export const create = async (req, res) => {
     const person = await PersonModel.create(req.body);
     res.status(201).json(person);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: 'Failed to create person' });
   }
 };
